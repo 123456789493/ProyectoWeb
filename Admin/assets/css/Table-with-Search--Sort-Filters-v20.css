@@ -106,7 +106,7 @@
   text-align: center !important;
   font-weight: 400 !important;
   font-size: 14px !important;
-  color: #212121v !important;
+  color: #212121 !important; /* Corregido aquí */
   background-image: none !important;
   background-color: transparent !important;
   -webkit-border-radius: 2px !important;

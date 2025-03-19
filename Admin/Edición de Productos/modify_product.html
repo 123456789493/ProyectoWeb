@@ -321,6 +321,21 @@
               <div class="mb-3">
                 <label
                   class="form-label"
+                  for="descripcion"
+                  style="color: rgb(0, 0, 0)"
+                  >Descripción:</label
+                >
+                <div id="errorDescripcion" class="text-danger"></div>
+                <textarea
+                  class="form-control form-control"
+                  id="descripcion"
+                  rows="3"
+                  required=""
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label
+                  class="form-label"
                   for="categoria-1"
                   style="color: rgb(0, 0, 0)"
                   >Agregar Imágenes:</label
@@ -342,19 +357,11 @@
                     margin-top: 10px;
                   "
                 >
-                  Agregar
-                </button>
-                <a
-                  class="btn btn-secondary"
-                  role="button"
-                  style="
+                  Agregar</button><a class="btn btn-secondary" role="button" style="
                     background: var(--bs-success);
                     font-weight: bold;
-                    margin-top: 10px;
-                  "
-                  href="../Menú/products.html"
-                  >Cancelar</a
-                >
+                    margin-top: 10px;"
+                  href="../Menú/products.html">Cancelar</a>
               </div>
             </form>
           </div>
@@ -382,6 +389,33 @@
     <script src="../assets/js/TableZoomSorter.js"></script>
     <script src="../assets/js/Tema_Admin.js"></script>
     <script src="../assets/js/WaveClickFX.js"></script>
-    <script src="../JS/validar_mod_prod.js"></script>
+    <script>
+      // Datos de ejemplo (puedes reemplazar esto con una llamada a una API)
+      const products = [
+        { id: 1, nombre: "Extractor", precio: 10, categoria: "Hogar", descripcion: "Extractor de jugos manual de gran tamaño, diseñado para obtener jugo de cítricos como naranjas, toronjas y limones con facilidad y eficiencia.", imagen: "../assets/img/clipboard-image-3.png" },
+        { id: 2, nombre: "Pila de Auto", precio: 20, categoria: "Hogar", descripcion: "Batería de 12 voltios, marca LTH, diseñada para ofrecer alta potencia y rendimiento confiable en vehículos automotores.", imagen: "../assets/img/bateria_auto.png" },
+        { id: 3, nombre: "Juego de piedras", precio: 5, categoria: "Hogar", descripcion: "Juego de piedras de 4 pulgadas fabricadas en piedra volcánica, ideales para moler maíz y otros granos. Su material garantiza un molido fino y homogéneo.", imagen: "../assets/img/molcajete.png" },
+        { id: 4, nombre: "Molino eléctrico", precio: 50, categoria: "Hogar", descripcion: "Es un molino eléctrico de granos, motor de 25 HP, ideal para moler diferentes tipos de granos como maíz, trigo, café y especias. Diseñado para ofrecer un molido uniforme y eficiente.", imagen: "../assets/img/clipboard-image-6.png" },
+        { id: 5, nombre: "Plaguicida", precio: 15, categoria: "Hogar", descripcion: "Plaguicida líquido en presentación de atomizador, especialmente formulado para eliminar cucarachas y otras plagas domésticas de manera rápida y efectiva.", imagen: "../assets/img/clipboard-image-7.png" }
+      ];
+
+      // Obtener el ID del producto desde la URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id');
+
+      // Buscar el producto en el array
+      const product = products.find(p => p.id == productId);
+
+      if (product) {
+        // Precargar los datos en el formulario
+        document.getElementById('nombre').value = product.nombre;
+        document.getElementById('precio').value = product.precio;
+        document.getElementById('categoria').value = product.categoria;
+        document.getElementById('descripcion').value = product.descripcion; // Precargar descripción
+        // Si necesitas precargar la imagen, puedes hacerlo aquí
+      } else {
+        console.error("Producto no encontrado");
+      }
+    </script>
   </body>
 </html>
